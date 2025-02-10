@@ -16,21 +16,113 @@
             <div class="w-[133px]">
                 <img src="./img/logo-digital-colleger.png" alt="logo-digital-colleger">
             </div>
-            <div id="borda-div" class="flex items-center justify-center h-[40px] border border-[2px] rounded-[5px] border-solid border-[#464646] duration-200 bg-[#333333] lg:w-[500px]">
-                <input id="pesquisa" type="text" class="search-txt w-[90%] text-white outline-none placeholder:text-[#464646]"
+            <div id="borda-div"
+                class="flex items-center justify-center h-[40px] border border-[2px] rounded-[5px] border-solid border-[#464646] duration-200 bg-[#333333] lg:w-[500px]">
+                <input id="pesquisa" type="text"
+                    class="search-txt w-[90%] text-white outline-none placeholder:text-[#464646]"
                     placeholder="Qual grupo está procurando?">
-                <box-icon id="icon-pesquisa" name='search' class="duration-200" color='#464646'></box-icon>
+                <box-icon id="icon-pesquisa" name='search' class="duration-200  cursor-pointer"
+                    color='#464646'></box-icon>
             </div>
         </div>
     </header>
     <section class="flex justify-center mt-[10px]">
         <div class="flex justify-between w-[90%]">
             <h1 class="text-white text-[33px] font-bold">Teams</h1>
-            <button class="flex w-[140px] h-[45px] gap-[4px] justify-center items-center pr-[6px] border-[2px] border-solid rounded-[5px] border-[#C81C6F] font-bold text-[15px] text-white hover:bg-[#C81C6F] duration-200"><box-icon name='plus' color='#ffffff'></box-icon>NOVO TEAM</button>
+            <button
+                class="flex w-[140px] h-[45px] gap-[4px] justify-center items-center pr-[6px] border-[2px] border-solid rounded-[5px] border-[#C81C6F] font-bold text-[15px] text-white hover:bg-[#C81C6F] duration-200 cursor-pointer"><box-icon
+                    name='plus' color='#ffffff'></box-icon>NOVO TEAM</button>
         </div>
     </section>
 
-    <script src="index.js"></script>
+    <div class="flex justify-center mt-7 gap-4">
+        <div class="w-[90%]">
+            <div class="bg-[#333333] w-[200px] h-[255px] rounded-lg p-4">
+                <div class="flex items-center justify-between">
+                    <h6 class="text-white text-[18px] font-bold">Nome do team</h6>
+                    <box-icon name='show' type='solid'
+                        class="fill-white cursor-pointer duration-200 hover:fill-rosa"></box-icon>
+                </div>
+                <div
+                    class="w-[100px] h-[100px] rounded-full bg-[#464646] flex flex-col justify-center items-center m-auto my-[26px]">
+                    <h1 class="text-white text-[50px] leading-[50px]">0</h1>
+                    <h6 class="font-bold text-white">/ 0</h6>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="flex-1 h-[40px] flex items-center border-2 border-[#C81C6F] rounded-lg text-white text-[12px] uppercase font-bold relative group">
+                        <span class="w-0 h-full absolute top-0 left-0 bg-rosa duration-200 group-hover:w-full"></span>
+                        <span class="w-full relative z-10 text-center">Adicionar</span>
+                    </button>
+                    <button
+                        class="w-[40px] h-[40px] flex justify-center items-center border-2 border-[#C81C6F] rounded-lg text-white text-[12px] uppercase font-bold relative group">
+                        <span class="w-0 h-full absolute top-0 left-0 bg-rosa duration-200 group-hover:w-full"></span>
+                        <box-icon name='trash' class="fill-white relative z-10"></box-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- fim do cart -->
+    
+    <div id="teams" class="grid grid-cols-5 gap-4"></div>
+
+    <div id="overlay" class="w-full h-screen fixed top-0 left-0 z-40 bg-black/80 duration-200 hidden"></div>
+    <div id="overlay" class="w-full h-screen fixed top-0 left-0 z-40 bg-black/80 duration-200 invisible opacity-0"
+        onclick="esconderOverlay()"></div>
+
+    <div id="criar"
+        class="w-[500px] bg-cinza3 p-[26px] rounded-lg fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+        <div id="criar"
+            class="w-[500px] bg-cinza3 p-[26px] rounded-lg fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 duration-200">
+            <div class="flex justify-between items-center">
+                <h2 class="text-white text-[24px] font-bold">Criar</h2>
+                <box-icon name='x' class="fill-white cursor-pointer hover:color-[#C81C6F] duration-200"
+                    onclick="esconderCriar(), esconderOverlay()"></box-icon>
+            </div>
+            <form class="mt-4">
+                <form onsubmit="criarTeam()" class="mt-4">
+                    <label for="nome" class="text-white text-[12px] uppercase font-bold block mb-[6px]">Nome do
+                        team</label>
+                    <input id="nome" type="text"
+                        class="w-full h-[40px] text-white bg-cinza2 outline-none border-2 border-cinza1 rounded-lg duration-200 focus:border-rosa mb-4 pl-4"
+                        required>
+                    <label for="capacidade" class="text-white text-[12px] uppercase font-bold block mb-[6px]">Capacidade
+                        do
+                        grupo</label>
+                    <input id="capacidade" type="text"
+                        class="w-full h-[40px] text-white bg-cinza2 outline-none border-2 border-cinza1 rounded-lg duration-200 focus:border-rosa mb-4 pl-4"
+                        required>
+                    <button
+                        class="w-full h-[40px] flex items-center border-2 border-rosa rounded-lg text-white text-[12px] uppercase font-bold relative group">
+                        <span class="w-0 h-full absolute top-0 left-0 bg-rosa duration-200 group-hover:w-full"></span>
+                        <span class="w-full relative z-10 text-center">Criar</span>
+                    </button>
+                </form>
+        </div>
+
+        <div id="editar"
+            class="w-[500px] bg-cinza3 p-[26px] rounded-lg fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden">
+            <div id="editar"
+                class="w-[500px] bg-cinza3 p-[26px] rounded-lg fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 invisible opacity-0">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-white text-[24px] font-bold">Adicionar participantes</h2>
+                    <box-icon name='x' class="fill-white cursor-pointer hover:fill-rosa duration-200"></box-icon>
+                </div>
+                <form class="mt-4">
+                    <label for="nome" class="text-white text-[12px] uppercase font-bold block mb-[6px]">Nome do
+                        Participante</label>
+                    <input type="text"
+                        class="w-full h-[40px] text-white bg-cinza2 outline-none border-2 border-cinza1 rounded-lg duration-200 focus:border-rosa mb-4 pl-4">
+                    <button
+                        class="w-full h-[40px] flex items-center border-2 border-rosa rounded-lg text-white text-[12px] uppercase font-bold relative group">
+                        <span class="w-0 h-full absolute top-0 left-0 bg-rosa duration-200 group-hover:w-full"></span>
+                        <span class="w-full relative z-10 text-center">Criar</span>
+                    </button>
+                </form>
+            </div>
+            </main>
+
+            <script src="index.js"></script>
 </body>
 
 </html>
